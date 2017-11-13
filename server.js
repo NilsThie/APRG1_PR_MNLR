@@ -39,8 +39,6 @@ app.get("/",function(req,res){
 });
 
 app.get("/index",function(req,res){
-
-
 		res.render("index");
 });
 
@@ -50,4 +48,8 @@ app.get("/upload",function(req,res){
 
 app.get("/stats",function(req,res){
 	res.render("stats");
+});
+
+app.get("/stream",function(req,res){
+	res.render("stream");
 });
