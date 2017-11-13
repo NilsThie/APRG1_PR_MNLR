@@ -42,7 +42,6 @@ app.get("/index",function(req,res){
 
 
 		res.render("index");
-	});
 });
 
 app.get("/upload",function(req,res){
@@ -51,15 +50,4 @@ app.get("/upload",function(req,res){
 
 app.get("/stats",function(req,res){
 	res.render("stats");
-});
-app.post("/hinzufuegen",function(req,res){
-	const texturename = req.body["texturename"];
-	const imagelink = "static/" + req.body["imagelink"];
-	// Datensatz für MongoDB vorbereiten
-	const document = {"texturname":texturename, "imagelink":imagelink};
-	db.collection(DB_COLLECTION).save(document, function(req,res){
-
-		console.log("Datensatz")
-		//   res.redirect("/create");
-	})
 });
