@@ -35,11 +35,11 @@ app.listen(3000, function(){
 });
 
 app.get("/",function(req,res){
-	res.redirect("/index");
+	res.redirect("/home");
 });
 
-app.get("/index",function(req,res){
-		res.render("index");
+app.get("/home",function(req,res){
+		res.render("home");
 });
 
 app.get("/upload",function(req,res){
