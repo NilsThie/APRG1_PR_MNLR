@@ -17,10 +17,17 @@ p {
     font-size: 20px;
 }
 
-IMG.displayed {
+IMG.displayed1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
 	margin-top: 150px;
-	height: 200px;
+}
+
+IMG.displayed2 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	
 }
