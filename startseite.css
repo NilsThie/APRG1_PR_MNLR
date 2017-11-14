@@ -1,3 +1,26 @@
 @charset "UTF-8";
 /* CSS Document */
 
+body {
+    background-color: rgb(195,255,211);
+}
+
+h1 {
+    color: rgb(255,192,0);
+    text-align: center;
+	font-family: Baskerville;
+	font-size: 60px;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	margin-top: 150px;
+	height: 200px;
+}
