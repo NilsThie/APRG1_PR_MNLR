@@ -42,8 +42,8 @@ app.get("/home",function(req,res){
 		res.render("home");
 });
 
-app.get("/upload",function(req,res){
-	res.render("upload");
+app.get("/login",function(req,res){
+	res.render("login");
 });
 
 app.get("/stats",function(req,res){
@@ -52,4 +52,59 @@ app.get("/stats",function(req,res){
 
 app.get("/stream",function(req,res){
 	res.render("stream");
+});
+
+app.get("/upload",function(req,res){
+	res.render("upload");
+});
+
+
+
+
+
+
+
+//POST for Main Menu
+//Link for Main menu Bar
+app.post("/menu",function(req,res){ein
+
+});
+//Link to Accountpage
+app.post("/viewAccount",function(req,res){
+
+});
+// Link to stats page
+app.post("/viewStats",function(req,res){
+
+});
+//Link to upload Paage
+app.post("/newUpload",function(req,res){
+
+});
+//POST for login
+// Login Button
+app.post("/commitLogin",function(req,res){
+
+});
+// Button to create new Account
+app.post("/newAccount",function(req,res){
+
+});
+//POST for stream 	
+//Sort By Date
+app.post("/sortByDate",function(req,res){
+
+});
+// Sort by Rating
+app.post("/sortByRating",function(req,res){
+
+});
+//POST for upload
+//Upload Button
+app.post("/upload",function(req,res){
+
+});
+// File Dialogue
+app.post("/selectFile",function(req,res){
+
 });
