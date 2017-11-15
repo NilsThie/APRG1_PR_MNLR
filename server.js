@@ -35,11 +35,7 @@ app.listen(3000, function(){
 });
 
 app.get("/",function(req,res){
-	res.redirect("/home");
-});
-
-app.get("/home",function(req,res){
-		res.render("home");
+	res.redirect("/stream");
 });
 
 app.get("/login",function(req,res){
@@ -90,7 +86,7 @@ app.post("/commitLogin",function(req,res){
 app.post("/newAccount",function(req,res){
 
 });
-//POST for stream 	
+//POST for stream
 //Sort By Date
 app.post("/sortByDate",function(req,res){
 
