@@ -1,12 +1,15 @@
 // Initialisierung des Webservers
 const express = require('express');
 const app = express();
-app.use('/static', express.static(__dirname + '/public'));
+//app.use('/static', express.static(__dirname + '/public'));
 
 
 // body-parser initialisieren
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use("/public", express.static(__dirname + '/public'));
+
 
 // EJS Template Engine initialisieren
 app.engine('.ejs', require('ejs').__express);
