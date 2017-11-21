@@ -87,6 +87,7 @@ form {
   padding: 5px 5px;
   position: relative;
   z-index: 2;
+  margin-bottom: 30%;
 }
 form input {
   -webkit-appearance: none;
@@ -146,7 +147,7 @@ form button:hover {
     left:50%;
     bottom:0;
     margin-top:10%;
-    margin-left:-25px;
+    margin-left:-2%;
     width:40%;
     -webkit-animation:bounce 1s infinite;
     -moz-animation:bounce 1s infinite;
@@ -154,6 +155,7 @@ form button:hover {
     animation:bounce 1s infinite;
     
   }
+
   
   @-webkit-keyframes bounce {
     0%       { bottom:0px; }
