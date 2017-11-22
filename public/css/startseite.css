@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 /* CSS Document */
 
 
@@ -39,41 +39,38 @@ IMG.displayed2 {
   font-weight: 300;
 }
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #53e3a6;
   font-weight: 800;
 }
 body ::-webkit-input-placeholder {
   /* WebKit browsers */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #53e3a6;
   font-weight: 800;
 }
 body :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #53e3a6;
   opacity: 1;
   font-weight: 800;
 }
 body ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #53e3a6;
   opacity: 1;
   font-weight: 800;
 }
 body :-ms-input-placeholder {
   /* Internet Explorer 10+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #53e3a6;
   font-weight: 800;
 }
 
-.wrapper.form-success .container h1 {
-  -webkit-transform: translateY(85px);
-          transform: translateY(85px); 
-}
+
 .container {
   max-width: 510px;
   margin: 0 auto;
@@ -94,16 +91,16 @@ form input {
      -moz-appearance: none;
           appearance: none;
   outline: 0;
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  background-color: rgba(255, 255, 255, 0.4 );
+  border: 3px;
+  background-color: rgba(255, 255, 255);
   width: 200px;
   border-radius: 10px;
   padding: 10px 15px;
   margin: 0 auto 10px auto;
   display: block;
   text-align: center;
-  font-size: 150%;
-  color: rgb(195,255,211)
+  font-size: 140%;
+  
   
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
@@ -125,7 +122,7 @@ form button {
      -moz-appearance: none;
           appearance: none;
   outline: 0;
-  background-color: white;
+  background-color: rgb(195,255,211);
   border: 0;
   padding: 10px 15px;
   color: #53e3a6;
@@ -133,8 +130,30 @@ form button {
   width: 40%;
   cursor:pointer;
   font-size: 150%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 900;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
+}
+
+.button2 {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  background-color: rgb(195,255,211);
+  border: 0;
+  padding: 10px 15px;
+  color: #53e3a6;
+  border-radius: 3px;
+  width: 20%;
+  cursor:pointer;
+  font-size: 90%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 600;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+	
 }
 form button:hover {
   background-color: #f5f7f9;

@@ -22,13 +22,25 @@
 
 	<div class="container">
 		<form class="form">
-			<input type="text" placeholder="Username">
-			<input type="password" placeholder="Password">
-			<button type="submit" id="login-button">Login</button>
+			<input type="text" placeholder="USERNAME">
+			<input type="password" placeholder="PASSWORD">
+			<input id="signup" style="display:none" placeholder="CONFIRM PASSWORD">
+			<button type="submit" id="login-button">LOGIN</button>
+			<br>
+			<button type="button" class="button2" onClick="document.getElementById('signup').style.display='block'">Sign Up</button>
+			<br>
+				<div id="ifY" style="display:none">
+					<input type="password" placeholder="CONFIRM PASSWORD">
+				</div>
+				
 		</form>
-		
-		
 	</div>
+	
+	
+	
+	
+
+
 	
 	
 
