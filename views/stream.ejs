@@ -4,6 +4,13 @@
   <title>Index</title>
 </head>
 <body>
-  <h1>Pick a category<h1>
+  <h1>Frdiges<h1>
+      <ul>
+        <% for(var i=0; i < fridges.length; i++){ %>
+          <li> <%=fridges[i].description %> :
+            <img src=<%=fridges[i].filepath %> alt="<%=fridges[i].description%>" height="128" width="128">
+            </li>
+            <% } %>
+          </ul>
       </body>
       </html>
