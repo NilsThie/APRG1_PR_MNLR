@@ -290,6 +290,12 @@ app.post("/commitUpload",function(req,res){
 	    });
 	});
 });
-// File Dialogue
-app.post("/selectFile",function(req,res){
+
+app.post('/rate/', (request, response) => {
+	const id = request.params.id;
+	const rating = request.body.stars;
+//	db.collection(DB_COLLECTION).update({"_id": id}, (err, result)=> {
+	//	{ $set: { rating : new_info  }
+		console.log(id);
+	//});
 });
