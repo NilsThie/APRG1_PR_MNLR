@@ -159,8 +159,9 @@ app.post("/commitLogin",function(request,response){
 // Button to create new Account
 app.post("/newAccount",function(request,response){
 	  const username = request.body.benutzername;
-    const password = request.body.passwort1;
+    const password = request.body.passwort;
     const repPassword = request.body.passwort2;
+		console.log("bading");
 
     var errors = [];
     if (username == "" || username == undefined) {
@@ -291,7 +292,7 @@ app.post("/commitUpload",function(req,res){
 	});
 });
 
-app.post('/rate/', (request, response) => {
+app.post('/rate/:id', (request, response) => {
 	const id = request.params.id;
 	const rating = request.body.stars;
 //	db.collection(DB_COLLECTION).update({"_id": id}, (err, result)=> {
