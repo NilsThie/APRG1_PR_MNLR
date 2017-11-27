@@ -87,7 +87,7 @@ app.get("/stream",function(req,res){
 		console.log(req.session.username);
 	}
 		db.collection(DB_COLLECTION).find().toArray(function(err, results) {
-			console.log(results);
+		//	console.log(results);
 			res.render("stream",{"fridges":results});
 });
 });
@@ -297,6 +297,10 @@ app.post('/rate/:id', (request, response) => {
 	const testString = "request.body.star_element_" + id;
 	const rating = request.body.star;
 	const newRating = 		{$set: {"rating": rating}};
+						db.collection(DB_USERCOLLECTION).findOne({'_id': id}, (error, result) => {
+							console.log(result);
+
+						});
 
 		db.collection(DB_COLLECTION).updateOne({"_id": id},newRating, function(err, res) {
 				console.log(newRating);
