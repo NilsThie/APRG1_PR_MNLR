@@ -70,7 +70,8 @@ app.get("/",function(req,res){
 });
 //-------------// login page
 app.get("/login",function(req,res){
-	res.render("login");
+	const errors = [];
+	res.render("login", {'error': errors});
 });
 //-------------// personal statistics
 app.get("/stats",function(req,res){
@@ -139,7 +140,7 @@ app.post("/commitLogin",function(request,response){
 			if (error) return console.log(error);
 			if (result == null) {
 				errors.push('Der User ' + username + ' existiert nicht.');
-				response.render('errors', {'error': errors});
+				response.render('login', {'error': errors});
 				return;
 			} else {
 				if(passwordHash.verify(password, result.password)) {
@@ -148,7 +149,7 @@ app.post("/commitLogin",function(request,response){
 					response.redirect("/stream");
 				} else {
 					errors.push('Das Passwort für diesen User stimmt nicht überein.');
-					response.render('errors', {'error': errors});
+					response.render('login', {'error': errors});
 				}
 			}
 
