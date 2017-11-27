@@ -77,7 +77,8 @@ body :-ms-input-placeholder {
   padding: 5px 0;
   height: 50%;
   text-align:center;
-  margin-top: 20%
+  margin-top: 20%;
+  margin-bottom: 10%;
   
 }
 
@@ -85,7 +86,7 @@ form {
   padding: 5px 5px;
   position: relative;
   z-index: 2;
-  margin-bottom: 30%;
+  
 }
 form input {
   -webkit-appearance: none;
@@ -152,6 +153,7 @@ form button {
   font-size: 90%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 600;
+  
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
 	

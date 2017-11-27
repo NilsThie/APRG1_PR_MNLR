@@ -18,26 +18,29 @@
 	<img class="displayed1" src="public/images/logo.svg" alt="Logo RateMyFridge" style="width:50%">
 	<div id="arrow"><img class="bounce" src="public/images/pfeil_runter.svg" alt="Pfeil" style="width:5%"></div>
 	
-	
-
-
-	<div class="container" id="login">
+	<div class="container">
 		<img class="displayed1" src="public/images/login.svg" alt="Login" style="width:20%">
+			<div id="login" style="display: block">
+			<form class="form" style="display: block">
+			<input name="username" type="text" placeholder="USERNAME">
+			<input name="password" type="password" placeholder="PASSWORD">
+			<button name="login" type="submit" id="login-button">LOGIN</button>
+				</form>
+			</div>
+			
+		<div id="signup" style="display: none">
 		<form class="form">
-			<input type="text" placeholder="USERNAME">
-			<input type="password" placeholder="PASSWORD">
-			<input type="password" id="signup" style="display:none" placeholder="CONFIRM PASSWORD" class="slideInUp">
-			<button type="submit" id="login-button">LOGIN</button>
-			<br>
-			<button type="button" class="button1" onClick="document.getElementById('signup').style.display='block'">Sign Up</button>
-			<br>
-				<div id="ifY" style="display:none">
-					<input type="password" placeholder="CONFIRM PASSWORD">
-				</div>
-				
-		</form>
+			<input name="newName" type="text" placeholder="USERNAME">
+			<input name="newPassword" type="password" placeholder="PASSWORD">
+			<input name="confirmPassword" type="password" placeholder="CONFIRM PASSWORD" class="slideInUp">
+			<button name="signUp" class="button1" type="submit" id="signUp-button">SIGN UP</button>
+			</form>
+		</div>
+			<form id="su" class="form" style="display: block">
+			<button type="button" class="button2" onClick="document.getElementById('login').style.display='none'; document.getElementById('signup').style.display='block'; document.getElementById('su').style.display='none'">SIGN UP</button>
+				</form>
 	</div>
-	
+			
 	<script type="text/javascript">
 	$("#arrow").click(function() {
     $('html, body').animate({
@@ -46,12 +49,6 @@
 	});
 	</script>
 	
-	
-
-
-	
-	
-
 	
 </body>
 </html>
