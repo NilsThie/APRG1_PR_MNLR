@@ -130,8 +130,8 @@ app.post("/newUpload",function(req,res){
 // Login Button
 app.post("/commitLogin",function(request,response){
 
-	const username = request.body.benutzername;
-	const password = request.body.passwort;
+	const username = request.body.username;
+	const password = request.body.password;
 	var errors = [];
 	request.session.authenticated = false;
 
@@ -158,9 +158,9 @@ app.post("/commitLogin",function(request,response){
 });
 // Button to create new Account
 app.post("/newAccount",function(request,response){
-	  const username = request.body.benutzername;
-    const password = request.body.passwort;
-    const repPassword = request.body.passwort2;
+	  const username = request.body.newName;
+    const password = request.body.newPassword;
+    const repPassword = request.body.confirmPassword;
 		console.log("bading");
 
     var errors = [];
@@ -294,9 +294,11 @@ app.post("/commitUpload",function(req,res){
 
 app.post('/rate/:id', (request, response) => {
 	const id = request.params.id;
-	const rating = request.body.stars;
-//	db.collection(DB_COLLECTION).update({"_id": id}, (err, result)=> {
-	//	{ $set: { rating : new_info  }
-		console.log(id);
-	//});
+	const testString = "request.body.star_element_" + id;
+	const rating = request.body.star;
+	const newRating = 		{$set: {"rating": rating}};
+
+		db.collection(DB_COLLECTION).updateOne({"_id": id},newRating, function(err, res) {
+				console.log(newRating);
+					});
 });

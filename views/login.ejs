@@ -7,7 +7,7 @@
    <link rel="stylesheet" href="public/css/startseite.css">
    <link rel="stylesheet" href="animate.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
 
 
 <title>Rate My Fridge</title>
@@ -17,30 +17,30 @@
 <body>
 	<img class="displayed1" src="public/images/logo.svg" alt="Logo RateMyFridge" style="width:50%">
 	<div id="arrow"><img class="bounce" src="public/images/pfeil_runter.svg" alt="Pfeil" style="width:5%"></div>
-	
+
 	<div class="container">
 		<img class="displayed1" src="public/images/login.svg" alt="Login" style="width:20%">
 			<div id="login" style="display: block">
-			<form class="form" style="display: block">
+			<form class="form" action="/commitLogin" method="post" style="display: block">
 			<input name="username" type="text" placeholder="USERNAME">
 			<input name="password" type="password" placeholder="PASSWORD">
-			<button name="login" type="submit" id="login-button">LOGIN</button>
+			<button name="login" type="submit"  id="login-button">LOGIN</button>
 				</form>
 			</div>
-			
+
 		<div id="signup" style="display: none">
-		<form class="form">
+		<form class="form" action="/newAccount" method="post">
 			<input name="newName" type="text" placeholder="USERNAME">
 			<input name="newPassword" type="password" placeholder="PASSWORD">
 			<input name="confirmPassword" type="password" placeholder="CONFIRM PASSWORD" class="slideInUp">
-			<button name="signUp" class="button1" type="submit" id="signUp-button">SIGN UP</button>
+			<button name="signUp" class="button1" type="submit"   id="signUp-button">SIGN UP</button>
 			</form>
 		</div>
 			<form id="su" class="form" style="display: block">
 			<button type="button" class="button2" onClick="document.getElementById('login').style.display='none'; document.getElementById('signup').style.display='block'; document.getElementById('su').style.display='none'">SIGN UP</button>
 				</form>
 	</div>
-			
+
 	<script type="text/javascript">
 	$("#arrow").click(function() {
     $('html, body').animate({
@@ -48,7 +48,7 @@
     }, 2000);
 	});
 	</script>
-	
-	
+
+
 </body>
 </html>
