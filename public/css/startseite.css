@@ -6,7 +6,7 @@
 
 
 body {
-    background-color: rgb(195,255,211);
+    background-color: rgb(195,255,211) !important;
 }
 
 
@@ -28,6 +28,23 @@ IMG.displayed2 {
 	margin-right: auto;
 	margin-top: 10%;
 	
+}
+
+IMG.displayed3 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	
+}
+
+IMG.displayed4 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 0px;
+
 }
 
 
@@ -79,7 +96,27 @@ body :-ms-input-placeholder {
   text-align:center;
   margin-top: 20%;
   margin-bottom: 10%;
-  
+}
+
+.container2 {
+  max-width: 510px;
+  margin: 0 auto;
+  padding: 5px 0;
+  height: 50%;
+  text-align:center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.container3 {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 5px 0;
+  height: 50%;
+  text-align:center;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  margin-left: auto;
 }
 
 form {
@@ -158,10 +195,45 @@ form button {
           transition-duration: 0.25s;
 	
 }
+
+.button3 {
+	 -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  background-color: rgb(255,255,255);
+  border: 0;
+  padding: 10px 15px;
+  color: #53e3a6;
+  border-radius: 5px;
+  width: 100px;
+  cursor:pointer;
+  font-size: 100%;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 600;
+  
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+
 form button:hover {
   background-color: #f5f7f9;
 }
 
+.button3:hover {
+  background-color: #f5f7f9;
+}
+
+#nextButton {
+	
+	position:relative; 
+	margin-top: 10px;
+	margin-bottom: 100px;
+}
+
+#tu {
+	margin-right: 30px;
+}
 
 
 .bounce {
@@ -177,6 +249,24 @@ form button:hover {
     animation:bounce 1s infinite;
     
   }
+
+#navbar {
+  max-width: 98%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.navbar-custom {
+    background-color: transparent !important;
+    color:#ffffff;
+    border-radius:10px;
+	border-color: transparent !important;
+}
+
+ol li.list-group-item { 
+    list-style: decimal inside;
+    display: list-item;
+}
 
   
   @-webkit-keyframes bounce {
@@ -202,4 +292,5 @@ form button:hover {
     50%      { bottom:15px; }
     100%     {bottom:30;}
   }
+
 
