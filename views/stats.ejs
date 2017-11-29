@@ -13,15 +13,14 @@
 
 </head>
 <body>
-     <!-- NavBar --> 
+     <!-- NavBar -->
      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="/stream">RateMyFridge</a>
           </div>
           <ul class="nav navbar-nav">
-              
-              <a href="/upload" class="btn btn-danger navbar-btn">Upload</a>           
+              <a href="/upload" class="btn btn-danger navbar-btn">Upload</a>
           </ul>
           <ul class="nav navbar-nav navbar-left">
               <li><li><a href="/stats">Top10</a></li></li>
@@ -30,9 +29,18 @@
             <li><a href="/viewAccount"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
           </ul>
         </div>
-      </nav> 
+      </nav>
       <div class="container"></div>
-      <h1>Pick a category<h1>
+      <h1>Top<h1>
+      </div>
+      <div class="top10">
+           <div class="container3">
+          	<ol class="list-group">
+        		<li name="ranking" class="list-group-item"><img src="<%=fridges[0].filepath %>" height="128" width="128">Rating: <%=fridges[0].rating%></li>
+        		<li name="ranking" class="list-group-item"><img src="<%=fridges[1].filepath %>" height="128" width="128">Rating: <%=fridges[1].rating%></li>
+        		<li name="ranking" class="list-group-item"><img src="<%=fridges[2].filepath %>" height="128" width="128"> Rating: <%=fridges[2].rating%></li>
+        	</ol>
+           </div>
       </div>
       </body>
       </html>

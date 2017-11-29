@@ -80,9 +80,16 @@ app.get("/stats",function(req,res){
 	if(req.session.username == null){
 	res.redirect("/login");
 		console.log(req.session.username);
+	}else{
+			db.collection(DB_COLLECTION).find().sort({rating: -1 }).toArray(function(err, results) {
+			//Redirect to upload if no fridges present
+				if(!results){
+					res.redirect("/stream");
+				} else{
+				res.render("stats",{"fridges":results});
 	}
-	res.render("stats");
 });
+}});
 //-------------// stream aka home
 app.get("/stream",function(req,res){
 		if(req.session.username == null){
