@@ -13,6 +13,7 @@ ObjectID = require('mongodb').ObjectID,
 app.use("/public", express.static(__dirname + '/public'));
 
 //Initialize file upload
+
 var multer = require("multer"); // Upload middleware
 const crypto = require('crypto'); // File renaming
 const mime = require('mime'); // File extensions
@@ -88,16 +89,21 @@ app.get("/stream",function(req,res){
 			res.redirect("/login");
 		console.log(req.session.username);
 		}
+
 		//Random dbEntry
 		function getRandomArbitrary(min, max) {
   		return Math.random() * (max - min) + min;
 		}
 		db.collection(DB_COLLECTION).find().toArray(function(err, results) {
+		//Redirect to upload if no fridges present
+			if(!results){
+				res.redirect("/upload");
+			} else{
 			var dbIndex = parseInt(getRandomArbitrary(0,results.length));
 			console.log("Next index"  + dbIndex);
 			console.log(err);
 			res.render("stream_neu",{"fridges":results,"dbIndex":dbIndex});
-});
+}});
 });
 //-------------//upload page
 app.get("/upload",function(req,res){
@@ -153,7 +159,7 @@ app.post("/commitLogin",function(request,response){
 				if(passwordHash.verify(password, result.password)) {
 					request.session.authenticated = true;
 					request.session.username = username;
-					response.redirect("/stream");
+					response.render("upload");
 				} else {
 					errors.push('Das Passwort für diesen User stimmt nicht überein.');
 					response.render('errors', {'error': errors});
@@ -161,7 +167,6 @@ app.post("/commitLogin",function(request,response){
 			}
 
 	});
-	console.log(username + " " + password + " "+passwordHash.generate(password));
 
 });
 // Button to create new Account
@@ -288,53 +293,92 @@ app.post("/commitUpload",function(req,res){
 		'username': username,
 		'filepath': filepath,
 		'uploadDate': new Date(),
-		'rating' : 0
+		'rating' : 0,
+		'ratedBy': username
 	 }
 	 db.collection(DB_COLLECTION).save(newUpload, (error, result) => {
 	    if (error) return console.log(error);
-	     res.redirect("/stream");
+	     res.redirect("/upload");
 	    });
 	});
 });
 //-----upvote
 app.post('/upvote/:id', (request, response) => {
-	const id = new ObjectID(request.params.id);
-	console.log(id);
- 	const update = {$inc: { rating : 1 }};
+	const id = new ObjectID(request.params.id); // get ObjectID for db query
+	const username = request.session.username // Username to check if user has already rated
+ 	const update = {$inc: { rating : 1 }}; //increment by 1
  	const options = {
                  upsert: true,
                  //multi: false,
                  returnOriginal:false
-             			};
-
-						db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
+  }; // options for findOneAndUpdate
+	//Check if user already voted
+	db.collection(DB_COLLECTION).findOne({'_id': id},(error, fridge) => {
+		if(!fridge){
+			response.redirect("/stream");
+			console.log(error);
+		}
+		else{
+		var ratedBy = fridge.ratedBy;
+		// check if username matches the rated by string
+		if(ratedBy.match(username)){
+				console.log("User already rated");
+				response.redirect("/stream");
+		} else {
+	// Flag user when he has voted
+					fridge.ratedBy += "-"+username;
+		      db.collection(DB_COLLECTION).save(fridge, (error, result) => {
+                    if (error) return console.log(error);
+                    console.log('ratedBy added for user:' + username);
+                });
+						 //increment score by 1 and redirect back to stream
+					db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
 							if(!fridge){
-								response.redirect("/stream");
 								console.log(error);
 							} else {
-
-							console.log(fridge);
-							response.redirect("/stream");
-}});
+								console.log(fridge);
+								response.redirect("/stream");
+			}});
+    }}});
 });
+
 //-----same logic for downvote
+//-----upvote
 app.post('/downvote/:id', (request, response) => {
-	const id = new ObjectID(request.params.id);
-	console.log(id);
- 	const update = {$inc: { rating : -1 }};
+	const id = new ObjectID(request.params.id); // get ObjectID for db query
+	const username = request.session.username // Username to check if user has already rated
+ 	const update = {$inc: { rating : -1 }}; //increment by 1
  	const options = {
                  upsert: true,
                  //multi: false,
                  returnOriginal:false
-             			};
-
-						db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
+  }; // options for findOneAndUpdate
+	//Check if user already voted
+	db.collection(DB_COLLECTION).findOne({'_id': id},(error, fridge) => {
+		if(!fridge){
+			response.redirect("/stream");
+			console.log(error);
+		}
+		else{
+		var ratedBy = fridge.ratedBy;
+		// check if username matches the rated by string
+		if(ratedBy.match(username)){
+				console.log("User already rated");
+				response.redirect("/stream");
+		} else {
+	// Flag user when he has voted
+					fridge.ratedBy += "-"+username;
+		      db.collection(DB_COLLECTION).save(fridge, (error, result) => {
+                    if (error) return console.log(error);
+                    console.log('ratedBy added for user:' + username);
+                });
+						 //increment score by 1 and redirect back to stream
+					db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
 							if(!fridge){
-								response.redirect("/stream");
 								console.log(error);
 							} else {
-
-							console.log(fridge);
-							response.redirect("/stream");
-}});
+								console.log(fridge);
+								response.redirect("/stream");
+			}});
+    }}});
 });
