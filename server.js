@@ -87,10 +87,16 @@ app.get("/stream",function(req,res){
 		if(req.session.username == null){
 			res.redirect("/login");
 		console.log(req.session.username);
-	}
+		}
+		//Random dbEntry
+		function getRandomArbitrary(min, max) {
+  		return Math.random() * (max - min) + min;
+		}
 		db.collection(DB_COLLECTION).find().toArray(function(err, results) {
-		//	console.log(results);
-			res.render("stream_neu",{"fridges":results});
+			var dbIndex = parseInt(getRandomArbitrary(0,results.length));
+			console.log("Next index"  + dbIndex);
+			console.log(err);
+			res.render("stream_neu",{"fridges":results,"dbIndex":dbIndex});
 });
 });
 //-------------//upload page
@@ -260,11 +266,10 @@ app.post("/resetPassword",function(request,response){
 	});
 
 //POST for stream
-//Sort By Date
-app.post("/sortByDate",function(req,res){
-});
-// Sort by Rating
-app.post("/sortByRating",function(req,res){
+
+app.post("/nextItem",function(req,res){
+	//reload stream with different dbIndex
+	res.redirect("/stream");
 });
 //POST for upload
 //Upload Button
@@ -279,13 +284,11 @@ app.post("/commitUpload",function(req,res){
 			return res.send("Error uploading file");
 		}
 	filepath = req.file.path;
-	description = req.body.description;
 	const newUpload = {
 		'username': username,
 		'filepath': filepath,
 		'uploadDate': new Date(),
-		'description': description,
-		'rating' : '0'
+		'rating' : 0
 	 }
 	 db.collection(DB_COLLECTION).save(newUpload, (error, result) => {
 	    if (error) return console.log(error);
@@ -296,31 +299,42 @@ app.post("/commitUpload",function(req,res){
 //-----upvote
 app.post('/upvote/:id', (request, response) => {
 	const id = new ObjectID(request.params.id);
-	var rating = parseInt(request.body.star);
-	console.log("Rating before:" + rating);
 	console.log(id);
- var update ={};
-	    db.collection(DB_COLLECTION).findOne({'_id': id}, (error, result) => {
-	        			rating = rating +  parseInt(result.rating);
-								console.log("Rating after:" + rating);
-								update = {$set: { rating : rating }};
+ 	const update = {$inc: { rating : 1 }};
+ 	const options = {
+                 upsert: true,
+                 //multi: false,
+                 returnOriginal:false
+             			};
 
-								});
-	const options = {
-                upsert: true,
-                //multi: false,
-                returnOriginal:false
-            };
 						db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
 							if(!fridge){
 								response.redirect("/stream");
-							}
+								console.log(error);
+							} else {
+
 							console.log(fridge);
 							response.redirect("/stream");
-	/*						 db.collection(DB_COLLECTION).save(fridge, (error, result) => {
-							    if (error) return console.log(error);
-							     res.redirect("/stream");
-								 });} */
-
+}});
 });
+//-----same logic for downvote
+app.post('/downvote/:id', (request, response) => {
+	const id = new ObjectID(request.params.id);
+	console.log(id);
+ 	const update = {$inc: { rating : -1 }};
+ 	const options = {
+                 upsert: true,
+                 //multi: false,
+                 returnOriginal:false
+             			};
+
+						db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
+							if(!fridge){
+								response.redirect("/stream");
+								console.log(error);
+							} else {
+
+							console.log(fridge);
+							response.redirect("/stream");
+}});
 });

@@ -47,20 +47,21 @@
 
   <!-- <h1 class="tk-balboa-plus-primary" width="40px">Fridges</h1> -->
   <img src="../public/images/rate_me.svg" class="displayed4" width="300">
-
-  <img name="ratePic" class="displayed4" src="<%=fridges[2].filepath %>" width="600px">
+  <img name="ratePic" class="displayed4" src="<%=fridges[dbIndex].filepath %>" height="200px">
 
   <div class="container2">
-  <form action="<%="/upvote/" + fridges[2]._id %>" method="post">
+  <div class="voting">
+  <form action="<%="/upvote/" + fridges[dbIndex]._id %>" method="post">
   <button type="submit" id="thumbsbutton" name="thumbsUp" value="1"><img src="../public/images/daumen_hoch.svg" width="40px"></button>
   </form>
-  <form   <form action="<%="/downvote/" + fridges[2]._id %>" method="post"  >
+  <form   <form action="<%="/downvote/" + fridges[dbIndex]._id %>" method="post"  >
   <button type="submit" id="thumbsbutton"  name="thumbsDown" value="-1"><img src="../public/images/daumen_runter.svg" width="40px"></button>
 </form>
 </div>
+</div>
 
 <div class="container2">
-	<button name="nextButton" id="nextButton" type="submit" action="/nextItem" class="button3">Next</button>
+	<button name="nextButton" id="nextButton" type="submit" formaction="/nextItem" method="post" class="button3">Next</button>
 	</div>
 
 </body>
