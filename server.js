@@ -330,15 +330,14 @@ app.post('/upvote/:id', (request, response) => {
 		      db.collection(DB_COLLECTION).save(fridge, (error, result) => {
                     if (error) return console.log(error);
                     console.log('ratedBy added for user:' + username);
+										db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
+																	if(!fridge){
+																		console.log(error);
+																	} else {
+																			console.log(fridge);
+																		response.redirect("/stream");
+													}});
                 });
-						 //increment score by 1 and redirect back to stream
-					db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
-							if(!fridge){
-								console.log(error);
-							} else {
-								console.log(fridge);
-								response.redirect("/stream");
-			}});
     }}});
 });
 
@@ -371,14 +370,13 @@ app.post('/downvote/:id', (request, response) => {
 		      db.collection(DB_COLLECTION).save(fridge, (error, result) => {
                     if (error) return console.log(error);
                     console.log('ratedBy added for user:' + username);
-                });
-						 //increment score by 1 and redirect back to stream
-					db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
-							if(!fridge){
-								console.log(error);
-							} else {
-								console.log(fridge);
-								response.redirect("/stream");
-			}});
+										db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
+																	if(!fridge){
+																		console.log(error);
+																	} else {
+																			console.log(fridge);
+																		response.redirect("/stream");
+													}});
+        				});
     }}});
 });
