@@ -338,11 +338,13 @@ select {
 
 button,
 html [type="button"],
-[type="reset"],
-[type="submit"] {
+[type="reset"] {
   -webkit-appearance: button;
 }
-
+button,
+html [id="thumbsbutton"] {
+  -webkit-appearance: thumbsbutton;
+}
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -8397,7 +8399,7 @@ IMG.displayed2 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10%;
-	
+
 }
 
 
@@ -8405,7 +8407,7 @@ IMG.displayed2 {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-	
+
   font-weight: 300;
 }
 body {
@@ -8442,7 +8444,7 @@ body :-ms-input-placeholder {
 
 .wrapper.form-success .container h1 {
   -webkit-transform: translateY(85px);
-          transform: translateY(85px); 
+          transform: translateY(85px);
 }
 .container {
   max-width: 600px;

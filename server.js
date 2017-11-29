@@ -6,6 +6,8 @@ const app = express();
 // body-parser initialisieren
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
+ObjectID = require('mongodb').ObjectID,
+
 
 //Use public dir to serve file requests
 app.use("/public", express.static(__dirname + '/public'));
@@ -88,7 +90,7 @@ app.get("/stream",function(req,res){
 	}
 		db.collection(DB_COLLECTION).find().toArray(function(err, results) {
 		//	console.log(results);
-			res.render("stream",{"fridges":results});
+			res.render("stream_neu",{"fridges":results});
 });
 });
 //-------------//upload page
@@ -99,8 +101,11 @@ app.get("/upload",function(req,res){
 }
 	else{
 			res.render("upload");
-
 	}
+});
+//Link to Accountpage
+app.get("/viewAccount",function(req,res){
+	res.render("stats");
 });
 
 
@@ -114,10 +119,7 @@ app.get("/upload",function(req,res){
 app.post("/menu",function(req,res){ein
 
 });
-//Link to Accountpage
-app.post("/viewAccount",function(req,res){
 
-});
 // Link to stats page
 app.post("/viewStats",function(req,res){
 
@@ -287,22 +289,38 @@ app.post("/commitUpload",function(req,res){
 	 }
 	 db.collection(DB_COLLECTION).save(newUpload, (error, result) => {
 	    if (error) return console.log(error);
-	     res.send(newUpload);
+	     res.redirect("/stream");
 	    });
 	});
 });
+//-----upvote
+app.post('/upvote/:id', (request, response) => {
+	const id = new ObjectID(request.params.id);
+	var rating = parseInt(request.body.star);
+	console.log("Rating before:" + rating);
+	console.log(id);
+ var update ={};
+	    db.collection(DB_COLLECTION).findOne({'_id': id}, (error, result) => {
+	        			rating = rating +  parseInt(result.rating);
+								console.log("Rating after:" + rating);
+								update = {$set: { rating : rating }};
 
-app.post('/rate/:id', (request, response) => {
-	const id = request.params.id;
-	const testString = "request.body.star_element_" + id;
-	const rating = request.body.star;
-	const newRating = 		{$set: {"rating": rating}};
-						db.collection(DB_USERCOLLECTION).findOne({'_id': id}, (error, result) => {
-							console.log(result);
+								});
+	const options = {
+                upsert: true,
+                //multi: false,
+                returnOriginal:false
+            };
+						db.collection(DB_COLLECTION).findOneAndUpdate({'_id': id},update,options, (error, fridge) => {
+							if(!fridge){
+								response.redirect("/stream");
+							}
+							console.log(fridge);
+							response.redirect("/stream");
+	/*						 db.collection(DB_COLLECTION).save(fridge, (error, result) => {
+							    if (error) return console.log(error);
+							     res.redirect("/stream");
+								 });} */
 
-						});
-
-		db.collection(DB_COLLECTION).updateOne({"_id": id},newRating, function(err, res) {
-				console.log(newRating);
-					});
+});
 });
