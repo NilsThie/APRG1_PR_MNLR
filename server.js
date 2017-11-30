@@ -148,6 +148,26 @@ app.get("/logout",function(req,res){
 		res.redirect("/login");
 });
 
+app.get("/deleteAccount", function(req,res){
+	const username = req.session.username;
+		   db.collection(DB_USERCOLLECTION).findOne({'username': username}, (error, result) => {
+			if (error) return console.log(error);
+			if (result == null) {
+				errors.push('Der User ' + username + ' existiert nicht.');
+				response.render('errors', {'error': errors});
+				return;
+			} else {
+					const id = result._id;
+					//return console.log(id);
+					const o_id = new ObjectID(id);
+					db.collection(DB_USERCOLLECTION).remove({"_id": o_id}, function (err, result) {
+				res.redirect('/logout');
+				console.log("deleted user:" + req.session.username);
+
+		});}
+});
+});
+
 
 
 
