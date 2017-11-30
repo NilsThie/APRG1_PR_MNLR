@@ -129,15 +129,14 @@ app.get("/viewAccount",function(req,res){
 			console.log(req.session.username);
 		}else{
 			const username = req.session.username;
-				db.collection(DB_COLLECTION).find({username:username}).sort({rating: -1 }).toArray(function(err, results) {
+				db.collection(DB_COLLECTION).find({'username':username}.toArray(function(err, results) {
 				//Redirect to upload if no fridges present
-					if(!results){
+					if(results == null){
 						res.redirect("/stream");
-						console.log(err);
 					} else{
 					res.render("account",{"fridges":results});
 		}
-});
+}));
 }});
 
 
