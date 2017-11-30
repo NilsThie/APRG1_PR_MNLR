@@ -400,6 +400,16 @@ ol li.list-group-item {
 input[type='file'] {
   color: transparent;
 }
+
+.list-group-item {
+background-color: transparent !important;
+border-color: transparent !important;
+}
+
+ol {
+  font-family: 'Heebo', sans-serif;
+  font-size: 50px;
+}
   
   @-webkit-keyframes bounce {
     0%       { bottom:0px; }
