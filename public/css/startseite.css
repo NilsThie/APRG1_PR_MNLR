@@ -11,8 +11,13 @@ body {
 
 
 p {
-    font-family: verdana;
-    font-size: 20px;
+    font-size: 50px;
+	color:#c82e29 !important;
+}
+
+h1 {
+	font-size: 100px !important;
+	color: #ffc000 !important;
 }
 
 IMG.displayed1 {
@@ -29,11 +34,13 @@ IMG.displayed2 {
 	margin-top: 10%;
 }
 
+
 IMG.displayed3 {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
+
 }
 
 IMG.displayed4 {
@@ -62,7 +69,7 @@ IMG.displayed5 {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
+	
   font-weight: 300;
 }
 body {
@@ -129,11 +136,23 @@ body :-ms-input-placeholder {
   margin-left: auto;
 }
 
+.left {
+  max-width: 25%;
+  margin: 0 auto;
+  padding: 5px 0;
+  height: 50%;
+  text-align:center;
+  margin-top: 10px;
+  
+  margin-left: 10%;
+
+}
+
 form {
   padding: 5px 5px;
   position: relative;
   z-index: 2;
-
+  
 }
 
 .form2 {
@@ -170,12 +189,12 @@ form input {
   display: block;
   text-align: center;
   font-size: 140%;
-
-
+  
+  
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
   font-weight:20%;
-
+  
 }
 form input:hover {
   background-color: rgba(255, 255, 255, 0.6);
@@ -205,28 +224,10 @@ form button {
   outline: 0;
   background-color: rgb(195,255,211);
   border: 0;
-  padding: 10px 5px;
+  padding: 10px 15px;
   color: #53e3a6;
   border-radius: 3px;
-  width: 25%;
-  cursor:pointer;
-  font-size: 150%;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 900;
-  -webkit-transition-duration: 0.25s;
-          transition-duration: 0.25s;
-}
-form thumbsbutton {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  outline: 0;
-  background-color: rgb(195,255,211);
-  border: 0;
-  padding: 10px 5px;
-  color: #53e3a6;
-  border-radius: 3px;
-  width: 1%;
+  width: 40%;
   cursor:pointer;
   font-size: 150%;
   font-family: 'Open Sans Condensed', sans-serif;
@@ -250,10 +251,10 @@ form thumbsbutton {
   font-size: 90%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 600;
-
+  
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
-
+	
 }
 
 .button3 {
@@ -271,7 +272,7 @@ form thumbsbutton {
   font-size: 100%;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 600;
-
+  
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
 }
@@ -308,8 +309,8 @@ form button:hover {
 }
 
 #nextButton {
-
-	position:relative;
+	
+	position:relative; 
 	margin-top: 10px;
 	margin-bottom: 100px;
 }
@@ -330,7 +331,7 @@ form button:hover {
     -moz-animation:bounce 1s infinite;
     -o-animation:bounce 1s infinite;
     animation:bounce 1s infinite;
-
+    
   }
 
 #navbar {
@@ -346,14 +347,11 @@ form button:hover {
 	border-color: transparent !important;
 }
 
-ol li.list-group-item {
+ol li.list-group-item { 
     list-style: decimal inside;
     display: list-item;
 }
 
-<<<<<<< HEAD
-
-=======
 .inputfile + label {
    	width: 0.1px;
 	height: 0.1px;
@@ -403,27 +401,28 @@ input[type='file'] {
   color: transparent;
 }
   
->>>>>>> 5b8b61c2d6aa2fed68dd85fcea8cd49c78846958
   @-webkit-keyframes bounce {
     0%       { bottom:0px; }
     50%      { bottom:15px; }
     100%     {bottom:30;}
   }
-
+  
    @-moz-keyframes bounce {
     0%       { bottom:0px; }
     50%      { bottom:15px; }
     100%     {bottom:30;}
   }
-
+  
    @-o-keyframes bounce {
     0%       { bottom:0px; }
     50%      { bottom:15px; }
     100%     {bottom:30;}
   }
-
+  
    @keyframes bounce {
     0%       { bottom:0px; }
     50%      { bottom:15px; }
     100%     {bottom:30;}
   }
+
+
