@@ -37,8 +37,12 @@
     </div>
   </div>
       </div>
+
       <div class="top10">
            <div class="container2">
+                         <%if(fridges.length == 0){%>
+                           No fridges uploaded
+                         <%} else{%>
           	<ol class="list-group">
             <li name="ranking" class="list-group-item"><img src="<%=fridges[0].filepath %>" height="128">Rating: <%=fridges[0].rating%></li>
             <li name="ranking" class="list-group-item"><img src="<%=fridges[1].filepath %>" height="128">Rating: <%=fridges[1].rating%></li>
@@ -51,7 +55,7 @@
         		<li name="ranking" class="list-group-item"><img src="<%=fridges[8].filepath %>" height="128"> Rating: <%=fridges[8].rating%></li>
         		<li name="ranking" class="list-group-item"><img src="<%=fridges[9].filepath %>" height="128"> Rating: <%=fridges[9].rating%></li>
         	</ol>
-           </div>
+           <%}%></div>
       </div>
       </body>
       </html>

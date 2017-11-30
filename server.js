@@ -132,11 +132,10 @@ app.get("/viewAccount",function(req,res){
 			console.log(query);
 				db.collection(DB_COLLECTION).find(query).toArray(function(err, results) {
 				//Redirect to upload if no fridges present
-				console.log("NEXT LINE = RESULTS:");
-				console.log(results);
 					if(results.length == 0){
-						res.redirect("/stream");
 						console.log("No results for user "+ req.session.username);
+											res.render("account",{"fridges": results});
+
 					} else{
 					//res.render("account",{"fridges":results});
 					res.render("account",{"fridges": results});
