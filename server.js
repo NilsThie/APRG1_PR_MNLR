@@ -128,15 +128,20 @@ app.get("/viewAccount",function(req,res){
 		res.redirect("/login");
 			console.log(req.session.username);
 		}else{
-			const username = req.session.username;
-				db.collection(DB_COLLECTION).find({'username':username}.toArray(function(err, results) {
+			var query = { username: req.session.username };
+			console.log(query);
+				db.collection(DB_COLLECTION).find(query).toArray(function(err, results) {
 				//Redirect to upload if no fridges present
-					if(results == null){
+				console.log("NEXT LINE = RESULTS:");
+				console.log(results);
+					if(results.length == 0){
 						res.redirect("/stream");
+						console.log("No results for user "+ req.session.username);
 					} else{
-					res.render("account",{"fridges":results});
+					//res.render("account",{"fridges":results});
+					res.render("account",{"fridges": results});
 		}
-}));
+});
 }});
 
 
