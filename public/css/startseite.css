@@ -19,7 +19,7 @@ IMG.displayed1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-	margin-top: 10%;
+  	margin-top: 10%;
 }
 
 IMG.displayed2 {
@@ -27,7 +27,6 @@ IMG.displayed2 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10%;
-
 }
 
 IMG.displayed3 {
@@ -35,7 +34,6 @@ IMG.displayed3 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
-
 }
 
 IMG.displayed4 {
@@ -43,8 +41,20 @@ IMG.displayed4 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
-	margin-bottom: 0px;
+  margin-bottom: 0px;
+}
 
+IMG.displayed5 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+  margin-bottom: 0px;
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
 }
 
 
