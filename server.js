@@ -124,8 +124,21 @@ app.get("/upload",function(req,res){
 });
 //Link to Accountpage
 app.get("/viewAccount",function(req,res){
-	res.render("stats");
+		if(req.session.username == null){
+		res.redirect("/login");
+			console.log(req.session.username);
+		}else{
+			const username = req.session.username;
+				db.collection(DB_COLLECTION).find({username:username}).sort({rating: -1 }).toArray(function(err, results) {
+				//Redirect to upload if no fridges present
+					if(!results){
+						res.redirect("/stream");
+						console.log(err);
+					} else{
+					res.render("account",{"fridges":results});
+		}
 });
+}});
 
 
 
