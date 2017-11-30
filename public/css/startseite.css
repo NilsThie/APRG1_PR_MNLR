@@ -143,12 +143,22 @@ body :-ms-input-placeholder {
 	margin-right: 5%;
 	margin-top: 7%;
 	max-width: 100px;
-	width: 100% !important;
-	
+  width: 100% !important;
+  position: relative;
+  top: 15%;
+
+  position: relative;
+  top: 15%;
 }
 
+.ranking {
+
+  position: relative;
+  top: 15%;
+}
+
+
 .rahmen {
-    
 	width: 300px;
 	height: 300px;
 	margin-left: 20px;
@@ -158,9 +168,7 @@ body :-ms-input-placeholder {
 	text-align: center;
 	background-color: #FFFFFF;
   float: left;
-  
   padding: 0.25rem;
-
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   transition: all 0.2s ease-in-out;
