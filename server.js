@@ -143,6 +143,11 @@ app.get("/viewAccount",function(req,res){
 });
 }});
 
+app.get("/logout",function(req,res){
+		req.session.authenticated = false;
+		res.redirect("/login");
+});
+
 
 
 
