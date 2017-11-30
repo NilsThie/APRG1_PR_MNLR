@@ -132,17 +132,41 @@ app.get("/viewAccount",function(req,res){
 			console.log(query);
 				db.collection(DB_COLLECTION).find(query).toArray(function(err, results) {
 				//Redirect to upload if no fridges present
-				console.log("NEXT LINE = RESULTS:");
-				console.log(results);
 					if(results.length == 0){
-						res.redirect("/stream");
 						console.log("No results for user "+ req.session.username);
+											res.render("account",{"fridges": results});
+
 					} else{
 					//res.render("account",{"fridges":results});
 					res.render("account",{"fridges": results});
 		}
 });
 }});
+
+app.get("/logout",function(req,res){
+		req.session.authenticated = false;
+		res.redirect("/login");
+});
+
+app.get("/deleteAccount", function(req,res){
+	const username = req.session.username;
+		   db.collection(DB_USERCOLLECTION).findOne({'username': username}, (error, result) => {
+			if (error) return console.log(error);
+			if (result == null) {
+				errors.push('Der User ' + username + ' existiert nicht.');
+				response.render('errors', {'error': errors});
+				return;
+			} else {
+					const id = result._id;
+					//return console.log(id);
+					const o_id = new ObjectID(id);
+					db.collection(DB_USERCOLLECTION).remove({"_id": o_id}, function (err, result) {
+				res.redirect('/logout');
+				console.log("deleted user:" + req.session.username);
+
+		});}
+});
+});
 
 
 
