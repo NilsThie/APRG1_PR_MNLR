@@ -157,9 +157,13 @@ body :-ms-input-placeholder {
 	margin-bottom: 20px;
 	text-align: center;
 	background-color: #FFFFFF;
-	padding: 30px;
-	border-radius: 20px;
-	float: left;
+  float: left;
+  
+  padding: 0.25rem;
+
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .spacer {
