@@ -14,6 +14,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="/public/lightbox/js/lightbox-plus-jquery.js"></script>
+  <link rel="stylesheet"href="public/lightbox/css/lightbox.css">
+  
+  
+  
+  
 
 </head>
 <body>
@@ -44,7 +50,7 @@
                          <%if(fridges.length == 0){%>
                            No fridges uploaded
                          <%} else{ for(var i=0; i < fridges.length;i++){%>
-            <li name="ranking" class="list-group-item"><img src="<%=fridges[i].filepath %>" height="128">           Rating: <%=fridges[i].rating%></li>
+            <li name="ranking" class="list-group-item"><a href="<%=fridges[i].filepath %>" data-lightbox="<%=i  %>"><img src="<%=fridges[i].filepath %>" height="128"></a>          Rating: <%=fridges[i].rating%></a></li>
            <%}}%></div>
       </div>
 
