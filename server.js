@@ -41,6 +41,13 @@ const DB_USERCOLLECTION = "users";
 const MongoClient = require('mongodb').MongoClient
 var db;
 
+//provide a sensible default for local development
+mongodb_connection_string = 'mongodb://127.0.0.1:27017/' + db_name;
+//take advantage of openshift env vars when available:
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+  mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+}
+
 MongoClient.connect(MONGO_URL, (err, database) => {
 	if (err) return console.log(err)
 	db = database
@@ -64,9 +71,17 @@ const passwordHash = require('password-hash');
 // Webserver starten
 // Aufruf im Browser: http://localhost:3000
 
-app.listen(3000, function(){
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+
+app.listen(server_port, server_ip_address, function () {
+	console.log( "Listening on " + server_ip_address + ", port " + server_port )
+  });
+
+/*app.listen(3000, function(){
 	console.log("listening on 3000");
-});
+});*/
+
 //-------------// root redirect to stream aka home
 app.get("/",function(req,res){
 	res.redirect("/stream");
